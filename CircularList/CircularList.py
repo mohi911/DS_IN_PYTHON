@@ -88,6 +88,33 @@ class CircularList:
                 i+=1
             new_node.set_next(temp.get_next())
             temp.set_next(new_node)   
+            
+     
+    def del_at_begining(self):
+        if self.length_list()==0:
+            print("List is empty1")
+            return
+        elif self.length_list()==1:
+            self.set_head(None)
+            self.set_tail(None)
+        else:
+            self.get_tail().set_next(self.get_head().get_next())
+            self.set_head(self.get_head().get_next())
+    
+    def del_at_end(self):
+        if self.length_list()==0:
+            print("List is empty")
+            return
+        elif self.length_list()==1:
+            self.set_head(None)
+            self.set_tail(None)
+        else:
+            temp=self.get_head()
+            while temp.get_next() is not self.get_tail():
+                temp = temp.get_next()           
+            temp.set_next(self.get_head())
+            self.set_tail(temp)  
+                      
                
 list1 = CircularList()
 list1.insert_at_begining("Mohit")
