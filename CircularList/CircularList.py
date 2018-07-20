@@ -33,7 +33,7 @@ class CircularList:
         else:
             i=1
             temp=temp.get_next()
-            while temp.get_next() is not self.get_head():
+            while temp is not self.get_head():
                 i+=1
                 temp = temp.get_next()      
             return i 
