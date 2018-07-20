@@ -114,7 +114,24 @@ class CircularList:
                 temp = temp.get_next()           
             temp.set_next(self.get_head())
             self.set_tail(temp)  
-                      
+       
+     
+
+    def del_at_pos(self,pos):
+        if pos<1 or pos>self.length_list():
+            print("Invalid position")
+            return
+        elif pos==1:
+            self.del_at_begining()
+        elif pos==self.length_list():
+            self.del_at_end()
+        else:
+            i=1
+            temp=self.get_head()
+            while i<pos-1:
+                temp=temp.get_next()
+                i+=1       
+            temp.set_next(temp.get_next().get_next())               
                
 list1 = CircularList()
 list1.insert_at_begining("Mohit")
