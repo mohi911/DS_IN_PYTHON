@@ -59,15 +59,45 @@ class CircularList:
             self.get_tail().set_next(new_node)
             new_node.set_next(self.get_head())       
             self.set_head(new_node)
+    
+    def insert_at_end(self,data):
+        new_node = Node(data)
+        if self.length_list()==0:
+            self.set_head(new_node) 
+            self.set_tail(new_node) 
+            self.get_tail().set_next(self.get_head())
+        else:
+            self.get_tail().set_next(new_node)
+            new_node.set_next(self.get_head())       
+            self.set_tail(new_node)        
             
-            
+    def insert_at_pos(self,pos,data):
+        new_node = Node(data)
+        if pos<1 or pos>self.length_list()+1:
+            print("Invalid position")
+            return
+        elif pos==1:
+            self.insert_at_begining(data)
+        elif pos==self.length_list()+1:
+            self.insert_at_end(data)
+        else:
+            i=1
+            temp=self.get_head()
+            while i<pos-1:
+                temp=temp.get_next()
+                i+=1
+            new_node.set_next(temp.get_next())
+            temp.set_next(new_node)   
+               
 list1 = CircularList()
 list1.insert_at_begining("Mohit")
-list1.insert_at_begining("Kansha")
+list1.insert_at_end("Kansha")
 list1.insert_at_begining("Prachi")
+list1.insert_at_pos(0,"Himanshi")
 list1.display_list()
 print("\nLength of list is :",list1.length_list())
 print("Head: ",list1.get_head())
 print("Tail: ",list1.get_tail())
+
 
 
